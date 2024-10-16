@@ -25,6 +25,7 @@ export default apiInitializer("1.14.0", (api) => {
             });
           });
           </script>
+        <h1>{{this.confettiAmount}}</h1>
         </template>
       } 
     );
