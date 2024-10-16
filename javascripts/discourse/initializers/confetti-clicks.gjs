@@ -4,7 +4,7 @@ import { apiInitializer } from "discourse/lib/api";
 export default apiInitializer("1.14.0", (api) => {
   try {
     api.renderInOutlet(
-      '',
+      'above-site-header',
       class confetticlicks extends Component {
         get confettiSpread() {
           return settings.confetti_spread;
