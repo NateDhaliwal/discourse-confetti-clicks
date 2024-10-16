@@ -1,0 +1,12 @@
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+<script>
+  window.addEventListener('click', function (e) {
+    let xpos = e.clientX;
+    let ypos = e.clientY;
+    confetti({
+      particleCount: 100,
+      spread: 360,
+      origin: { y: ypos/window.innerHeight , x: xpos/window.innerWidth },
+    });
+  });
+               </script>
