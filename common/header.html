@@ -1,15 +1,13 @@
 <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
-<script type='text/x-handlebars'>
-  alert(`{{{theme-setting 'confetti_amount'}}}, {{{theme-setting 'confetti_spread'}}}`);
-</script>
 <script>
-  //alert(confetti_spread);
+  //{{theme-setting 'confetti_amount'}}
+  //{{theme-setting 'confetti_spread'}}
   window.addEventListener('click', function (e) {
     let xpos = e.clientX;
     let ypos = e.clientY;
     confetti({
-      particleCount: confetti_amount,
-      spread: confetti_spread,
+      particleCount: 100,
+      spread: 360,
       origin: { y: ypos/window.innerHeight , x: xpos/window.innerWidth },
     });
   });
