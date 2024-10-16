@@ -3,18 +3,19 @@
   var script = document.createElement('script');
   script.src = "https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js";
   document.head.appendChild(script);
-  
+
+  // Define settings variables outside of onload
+  const confettiAmount = settings.confetti_amount; // Note: Removed interpolation syntax
+  const confettiSpread = settings.confetti_spread; // Note: Removed interpolation syntax
+
   // Wait for the script to load before using it
   script.onload = function() {
-    const confetti_amount = ${settings.confetti_amount};
-    const confetti_spread = ${settings.confetti_spread};
-    
     window.addEventListener('click', function (e) {
       let xpos = e.clientX;
       let ypos = e.clientY;
-      window.confetti({ // Make sure this method is correctly referenced if it depends on the library's global scope
-        particleCount: confetti_amount,
-        spread: confetti_spread,
+      window.confetti({ // Assume confetti is globally accessible after script load
+        particleCount: confettiAmount,
+        spread: confettiSpread,
         origin: { y: ypos/window.innerHeight , x: xpos/window.innerWidth },
       });
     });
