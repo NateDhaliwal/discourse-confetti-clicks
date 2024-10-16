@@ -1,16 +1,22 @@
 <script type="text/discourse-plugin" version="1.14.0">
-<script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
-<script>
-  const confetti_amount = ${settings.confetti_amount}
-  const confetti_spread = ${settings.confetti_spread}
-  window.addEventListener('click', function (e) {
-    let xpos = e.clientX;
-    let ypos = e.clientY;
-    confetti({
-      particleCount: confetti_amount,
-      spread: confetti_spread,
-      origin: { y: ypos/window.innerHeight , x: xpos/window.innerWidth },
+  // Load the external script
+  var script = document.createElement('script');
+  script.src = "https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js";
+  document.head.appendChild(script);
+  
+  // Wait for the script to load before using it
+  script.onload = function() {
+    const confetti_amount = ${settings.confetti_amount};
+    const confetti_spread = ${settings.confetti_spread};
+    
+    window.addEventListener('click', function (e) {
+      let xpos = e.clientX;
+      let ypos = e.clientY;
+      window.confetti({ // Make sure this method is correctly referenced if it depends on the library's global scope
+        particleCount: confetti_amount,
+        spread: confetti_spread,
+        origin: { y: ypos/window.innerHeight , x: xpos/window.innerWidth },
+      });
     });
-  });
-</script>
+  };
 </script>
