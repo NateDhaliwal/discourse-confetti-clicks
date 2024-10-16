@@ -1,0 +1,9 @@
+confetti_amount:
+  default: 100
+  type: integer
+  description: "The amount of confetti used on each click."
+
+confetti_spread:
+  default: 360
+  type: integer
+  description: "The spread of confetti around on each click. All values are in degrees."
