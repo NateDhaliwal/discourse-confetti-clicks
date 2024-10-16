@@ -1,7 +1,7 @@
 {
   "name": "Confetti clicks",
   "component": true,
-  "license_url": null,
+  "license_url": "https://github.com/NateDhaliwal/discourse-confetti-clicks/blob/main/LICENSE",
   "about_url": null,
   "authors": "NateDhaliwal",
   "theme_version": "1.0.0",
