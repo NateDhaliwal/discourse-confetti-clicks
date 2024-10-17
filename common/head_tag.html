@@ -15,7 +15,7 @@
     if (window.location.pathname.includes('/t/')) {
       // Assuming Discourse makes current category info available in a JavaScript variable
       // Simulating fetching category info (replace with actual method)
-      let currentCategory = Discourse.__container__.lookup('controller:topic').get('category.id'); 
+      let currentCategory = Discourse.__container__.lookup('controller:topic').get('category.slug'); 
 
       if (allowedCategories.includes(currentCategory.toString())) {
         window.addEventListener('click', function (e) {
