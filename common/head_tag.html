@@ -8,28 +8,25 @@
   const confettiAmount = settings.confetti_amount; // Note: Removed interpolation syntax
   const confettiSpread = settings.confetti_spread; // Note: Removed interpolation syntax
   const allowedCategories = settings.allowed_in.split('|'); // Assuming `allowed_in` is a string of category names or IDs
-  console.log(allowedCategories);
-  console.log(`PAthname: ${window.location.pathname}`);
-  // Wait for the script to load before using it
-  script.onload = function() {
-    // Check if we are on a topic page
+  api.onPageChange((url, title) => {
+    // Check for a topic page using the URL pattern or title
+    if (url.includes('/t/') && api.getCurrentUser().get('username')) {
 
-    if (window.location.pathname.includes('/t/')) {
-      // Assuming Discourse makes current category info available in a JavaScript variable
-      // Simulating fetching category info (replace with actual method)
-      let currentCategory = Discourse.__container__.lookup('controller:topic').get('category.id');
-      console.log(`Current cat: ${currentCategory}`);
-      if (allowedCategories.includes(currentCategory.toString())) {
-        window.addEventListener('click', function (e) {
+      let categoryName = api.getCurrentCategory().slug; // Use a similar method or accessor
+      console.log(categoryName); // Verify in the console
+
+      if (allowedCategories.includes(categoryName)) {
+        window.addEventListener('click', function(e) {
           let xpos = e.clientX;
           let ypos = e.clientY;
-          window.confetti({ // Assume confetti is globally accessible after script load
+          // Assuming 'confetti' script loaded
+          window.confetti({
             particleCount: confettiAmount,
             spread: confettiSpread,
-            origin: { y: ypos/window.innerHeight , x: xpos/window.innerWidth },
+            origin: { y: ypos / window.innerHeight , x: xpos / window.innerWidth },
           });
         });
       }
     }
-  };
+  });
 </script>
