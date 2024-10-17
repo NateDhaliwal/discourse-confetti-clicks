@@ -1,43 +1,37 @@
-<script type="text/discourse-plugin" version="1.14.0">
-  // Load the external script
-  var script = document.createElement('script');
-  script.src = "https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js";
-  document.head.appendChild(script);
+<script type="text/discourse-plugin" version="0.8.42">
+  let confettiHandler; // To store the event listener function
 
-  // Define settings variables outside of onload
-  const confettiAmount = settings.confetti_amount; // Note: Removed interpolation syntax
-  const confettiSpread = settings.confetti_spread; // Note: Removed interpolation syntax
-  const allowedCategories = settings.allowed_in.split('|'); // Assuming `allowed_in` is a string of category names or IDs
-  console.log(allowedCategories);
-  console.log(`PAthname: ${window.location.pathname}`);
-  // Wait for the script to load before using it
-  script.onload = function() {
-    api.onPageChange((url, title) => {
+  api.onPageChange((url, title) => {
+    // Remove any existing confetti listener
+    if (confettiHandler) {
+      window.removeEventListener('click', confettiHandler);
+      confettiHandler = null;
+    }
+
     if (url.includes('/t/')) { // Check if we're on a topic page
       const topicController = Discourse.__container__.lookup('controller:topic');
       const topicModel = topicController.get('model');
       
-      // Access category details
-      const categoryId = topicModel.category.id; 
-      const categorySlug = topicModel.category.slug; // if you prefer using slug
-      console.log(`Current Category ID: ${categoryId}, Slug: ${categorySlug}`);
-      if (allowedCategories.includes(categorySlug.toString())) {
-        window.addEventListener('click', function (e) {
+      const categorySlug = topicModel.category.slug; // Using slug for this example
+      const allowedCategories = settings.allowed_in.split('|'); // Assuming this is a list of slugs
+
+      const confettiAmount = settings.confetti_amount; // Note: Removed interpolation syntax
+      const confettiSpread = settings.confetti_spread; // Note: Removed interpolation syntax
+  
+      if (allowedCategories.includes(categorySlug)) {
+        // Define the handler to use for confetti
+        confettiHandler = function (e) {
           let xpos = e.clientX;
           let ypos = e.clientY;
-          window.confetti({ // Assume confetti is globally accessible after script load
-            particleCount: confettiAmount,
-            spread: confettiSpread,
-            origin: { y: ypos/window.innerHeight , x: xpos/window.innerWidth },
+          window.confetti({
+            particleCount: settings.confetti_amount,
+            spread: settings.confetti_spread,
+            origin: { y: ypos / window.innerHeight , x: xpos / window.innerWidth },
           });
-        });
-      } else {
-        void(0);
+        };
+        
+        window.addEventListener('click', confettiHandler);
       }
-    } else {
-      void(0);
     }
   });
-
-  };
 </script>
