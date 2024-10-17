@@ -21,7 +21,7 @@
       const categoryId = topicModel.category.id; 
       const categorySlug = topicModel.category.slug; // if you prefer using slug
       console.log(`Current Category ID: ${categoryId}, Slug: ${categorySlug}`);
-      if (allowedCategories.includes(currentCategory.toString())) {
+      if (allowedCategories.includes(categorySlug.toString())) {
         window.addEventListener('click', function (e) {
           let xpos = e.clientX;
           let ypos = e.clientY;
