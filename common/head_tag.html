@@ -8,15 +8,14 @@
   const confettiAmount = settings.confetti_amount; // Note: Removed interpolation syntax
   const confettiSpread = settings.confetti_spread; // Note: Removed interpolation syntax
   const allowedCategories = settings.allowed_in.split('|'); // Assuming `allowed_in` is a string of category names or IDs
-
+  console.log(allowedCategories);
   // Wait for the script to load before using it
   script.onload = function() {
     // Check if we are on a topic page
     if (window.location.pathname.includes('/t/')) {
       // Assuming Discourse makes current category info available in a JavaScript variable
       // Simulating fetching category info (replace with actual method)
-      let currentCategory = Discourse.__container__.lookup('controller:topic').get('category.slug'); 
-      console.log(currentCategory);
+      let currentCategory = Discourse.__container__.lookup('controller:topic').get('category.id'); 
       if (allowedCategories.includes(currentCategory.toString())) {
         window.addEventListener('click', function (e) {
           let xpos = e.clientX;
