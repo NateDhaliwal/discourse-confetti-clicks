@@ -16,7 +16,7 @@
       // Assuming Discourse makes current category info available in a JavaScript variable
       // Simulating fetching category info (replace with actual method)
       let currentCategory = Discourse.__container__.lookup('controller:topic').get('category.slug'); 
-
+      console.log(currentCategory);
       if (allowedCategories.includes(currentCategory.toString())) {
         window.addEventListener('click', function (e) {
           let xpos = e.clientX;
