@@ -7,3 +7,8 @@ confetti_spread:
   default: 360
   type: integer
   description: "The spread of confetti around on each click. All values are in degrees."
+
+allowed_in:
+  default: ""
+  type: string
+  description: "Enter the category(s)' slugs, separated by '|'."
