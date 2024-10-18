@@ -11,8 +11,8 @@
       window.removeEventListener('click', confettiHandler);
       confettiHandler = null;
     }
-
-    if (url.includes('/t/')) { // Check if we're on a topic page
+    const allowedCategories = settings.allowed_in.split('|'); // Assuming this is a list of slugs
+    if (url.includes('/t/') && allowedCategories != []) { // Check if we're on a topic page
       const topicController = Discourse.__container__.lookup('controller:topic');
       const topicModel = topicController.get('model');
       
