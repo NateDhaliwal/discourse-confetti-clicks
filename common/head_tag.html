@@ -15,8 +15,8 @@
     const allowedCategories = settings.allowed_in.split('|'); // Assuming this is a list of slugs
     const confettiAmount = settings.confetti_amount; // Note: Removed interpolation syntax
     const confettiSpread = settings.confetti_spread; // Note: Removed interpolation syntax
-    console.log(allowedCategories[1]);
-    if (allowedCategories.length < 1 || allowedCategories[1] != undefined) {
+    console.log(allowedCategories);
+    if (allowedCategories.length < 1 || allowedCategories != undefined) {
       console.log('Has cats');
       if (url.includes('/t/')) { // Check if we're on a topic page
         const topicController = Discourse.__container__.lookup('controller:topic');
