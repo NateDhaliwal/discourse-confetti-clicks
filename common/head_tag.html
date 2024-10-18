@@ -16,12 +16,27 @@
     const confettiAmount = settings.confetti_amount; // Note: Removed interpolation syntax
     const confettiSpread = settings.confetti_spread; // Note: Removed interpolation syntax
     console.log(allowedCategories);
-  
-    if (url.includes('/t/') && allowedCategories != []) { // Check if we're on a topic page
-      const topicController = Discourse.__container__.lookup('controller:topic');
-      const topicModel = topicController.get('model');
-      const categorySlug = topicModel.category.slug; // Using slug for this example
-      if (allowedCategories.includes(categorySlug)) {
+    if (allowedCategories != "" || allowedCategories != []) {
+      if (url.includes('/t/')) { // Check if we're on a topic page
+        const topicController = Discourse.__container__.lookup('controller:topic');
+        const topicModel = topicController.get('model');
+        const categorySlug = topicModel.category.slug; // Using slug for this example
+        if (allowedCategories.includes(categorySlug)) {
+          // Define the handler to use for confetti
+          confettiHandler = function (e) {
+            let xpos = e.clientX;
+            let ypos = e.clientY;
+            window.confetti({
+              particleCount: settings.confetti_amount,
+              spread: settings.confetti_spread,
+              origin: { y: ypos / window.innerHeight , x: xpos / window.innerWidth },
+            });
+          };
+          
+          window.addEventListener('click', confettiHandler);
+        }
+      } 
+    } else {
         // Define the handler to use for confetti
         confettiHandler = function (e) {
           let xpos = e.clientX;
@@ -32,20 +47,6 @@
             origin: { y: ypos / window.innerHeight , x: xpos / window.innerWidth },
           });
         };
-        
-        window.addEventListener('click', confettiHandler);
       }
-    } else {
-      // Define the handler to use for confetti
-      confettiHandler = function (e) {
-        let xpos = e.clientX;
-        let ypos = e.clientY;
-        window.confetti({
-          particleCount: settings.confetti_amount,
-          spread: settings.confetti_spread,
-          origin: { y: ypos / window.innerHeight , x: xpos / window.innerWidth },
-        });
-      };
-    }
   });
 </script>
