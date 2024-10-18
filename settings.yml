@@ -11,4 +11,4 @@ confetti_spread:
 allowed_in:
   default: ""
   type: string
-  description: "Enter the category(s)' slugs, separated by '|'."
+  description: "Enter the category(s)' slugs, separated by '|'. To enable confetti in all categories, leave this blank."
