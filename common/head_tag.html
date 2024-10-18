@@ -1,4 +1,8 @@
 <script type="text/discourse-plugin" version="0.8.42">
+  var script = document.createElement('script');
+  script.src = "https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js";
+  document.head.appendChild(script);
+  
   let confettiHandler; // To store the event listener function
 
   api.onPageChange((url, title) => {
