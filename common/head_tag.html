@@ -15,7 +15,7 @@
     const allowedCategories = settings.allowed_in.split('|'); // Assuming this is a list of slugs
     const confettiAmount = settings.confetti_amount; // Note: Removed interpolation syntax
     const confettiSpread = settings.confetti_spread; // Note: Removed interpolation syntax
-    console.log(allowedCategories.length);
+    console.log(allowedCategories[0] === undefined);
     if (allowedCategories[0] === undefined) {
       console.log('Has cats');
       if (url.includes('/t/')) { // Check if we're on a topic page
@@ -37,6 +37,7 @@
         }
       } 
     } else {
+        console.log('No cats');
         // Define the handler to use for confetti
         confettiHandler = function (e) {
           let xpos = e.clientX;
