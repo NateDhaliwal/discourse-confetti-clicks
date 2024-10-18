@@ -12,6 +12,7 @@
       confettiHandler = null;
     }
     const allowedCategories = settings.allowed_in.split('|'); // Assuming this is a list of slugs
+    console.log(allowedCategories);
     if (url.includes('/t/') && allowedCategories != []) { // Check if we're on a topic page
       const topicController = Discourse.__container__.lookup('controller:topic');
       const topicModel = topicController.get('model');
