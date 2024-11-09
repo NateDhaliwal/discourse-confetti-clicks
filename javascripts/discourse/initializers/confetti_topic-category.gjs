@@ -1,6 +1,6 @@
 import Component from "@glimmer/component";
 import { apiInitializer } from "discourse/lib/api";
-import { iconHTML } from "discourse-common/lib/icon-library";
+//import { iconHTML } from "discourse-common/lib/icon-library";
 
 
 export default apiInitializer("1.14.0", (api) => {
@@ -14,7 +14,7 @@ export default apiInitializer("1.14.0", (api) => {
         api.renderInOutlet (
           'topic-category',
           <template>
-          <p>{{d-icon 'check'}} Confetti enabled</p>
+          <p>Confetti enabled</p>
           </template>
         );  
       }
