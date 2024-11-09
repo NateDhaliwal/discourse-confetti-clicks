@@ -16,7 +16,6 @@
     const confettiAmount = settings.confetti_amount; // Note: Removed interpolation syntax
     const confettiSpread = settings.confetti_spread; // Note: Removed interpolation syntax
     if (allowedCategories[0] != "") {
-      console.log('Has cats');
       if (url.includes('/t/')) { // Check if we're on a topic page
         const topicController = Discourse.__container__.lookup('controller:topic');
         const topicModel = topicController.get('model');
@@ -36,7 +35,6 @@
         }
       } 
     } else {
-        console.log('No cats');
         // Define the handler to use for confetti
         confettiHandler = function (e) {
           let xpos = e.clientX;
