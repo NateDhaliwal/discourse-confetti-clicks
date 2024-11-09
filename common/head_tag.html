@@ -11,12 +11,7 @@
       window.removeEventListener('click', confettiHandler);
       confettiHandler = null;
     }
-    api.renderInOutlet(
-      'below-site-header',
-      <template>
-        <p>Hi there!</p>
-      </template>
-    );
+  
     const allowedCategories = settings.allowed_in.split('|'); // Assuming this is a list of slugs
     const confettiAmount = settings.confetti_amount; // Note: Removed interpolation syntax
     const confettiSpread = settings.confetti_spread; // Note: Removed interpolation syntax
