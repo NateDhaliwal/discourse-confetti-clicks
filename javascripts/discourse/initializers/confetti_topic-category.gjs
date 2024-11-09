@@ -24,4 +24,4 @@ export default apiInitializer("1.14.0", (api) => {
   } catch (e) {
     console.error(e);
   }
-}
+});
