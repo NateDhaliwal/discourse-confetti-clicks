@@ -9,7 +9,7 @@ confetti_spread:
   description: "The spread of confetti around on each click. All values are in degrees."
 
 allowed_in:
-  default: nil
-  type: list
+  default: general
+  type: enum
   list_type: categories
-  description: "Enter the category(s)' slugs, separated by '|'. To enable confetti in all categories, leave this blank."
+  description: "Enter the category(s) for confetti to be enabled in. To enable confetti in all categories, leave this blank."
