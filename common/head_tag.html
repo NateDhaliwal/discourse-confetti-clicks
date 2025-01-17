@@ -20,7 +20,7 @@
         const topicController = Discourse.__container__.lookup('controller:topic');
         const topicModel = topicController.get('model');
         console.log(topicModel);
-        const categorySlug = topicModel.category.slug; // Using slug for this example
+        const categorySlug = topicModel.category_id; // Using slug for this example
         console.log(categorySlug);
         if (allowedCategories.includes(categorySlug)) {
           // Define the handler to use for confetti
