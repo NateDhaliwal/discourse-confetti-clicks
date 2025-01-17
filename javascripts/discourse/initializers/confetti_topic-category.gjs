@@ -12,7 +12,7 @@ export default apiInitializer("1.14.0", (api) => {
         const topicController = Discourse.__container__.lookup('controller:topic');
         const topicModel = topicController.get('model');
         const categorySlug = topicModel.category.slug; // Using slug for this example
-        if (allowedCategories.includes(categorySlug)) {
+        if (allowedCategories.includes(categorySlug.toString())) {
           api.renderInOutlet(
             'below-site-header',
             <template>
