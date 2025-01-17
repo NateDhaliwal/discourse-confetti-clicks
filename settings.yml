@@ -10,6 +10,6 @@ confetti_spread:
 
 allowed_in:
   default: general
-  type: enum
+  type: list
   list_type: categories
   description: "Enter the category(s) for confetti to be enabled in. To enable confetti in all categories, leave this blank."
