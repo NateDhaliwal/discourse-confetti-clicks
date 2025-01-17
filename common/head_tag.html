@@ -22,7 +22,7 @@
         console.log(topicModel);
         const categorySlug = topicModel.category_id; // Using slug for this example
         console.log(categorySlug);
-        if (allowedCategories.includes(categorySlug)) {
+        if (allowedCategories.includes(categorySlug.toString())) {
           // Define the handler to use for confetti
           confettiHandler = function (e) {
             let xpos = e.clientX;
