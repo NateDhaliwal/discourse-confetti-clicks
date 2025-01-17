@@ -7,7 +7,7 @@ export default apiInitializer("1.14.0", (api) => {
   api.onPageChange((url, title) => {
     const allowedCategories = settings.allowed_in.split('|'); // Assuming this is a list of slugs
     console.log(allowedCategories);
-    if (allowedCategories[0] != "") {
+    if (allowedCategories) {
       if (url.includes('/t/')) { // Check if we're on a topic page
         const topicController = Discourse.__container__.lookup('controller:topic');
         const topicModel = topicController.get('model');
