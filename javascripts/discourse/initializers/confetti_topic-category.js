@@ -6,7 +6,7 @@ import { tracked } from "@glimmer/tracking";
 // document.head.appendChild(script);
 
 export default apiInitializer("1.14.0", (api) => {
-  @tracked confettiHandler; // To store the event listener function
+  const confettiHandler; // To store the event listener function
   const allowedCategories = settings.allowed_in_categories.split('|');
   const allowedURLs = settings.allowed_in_urls.split('|');
   const confettiAmount = settings.confetti_amount;
@@ -14,9 +14,9 @@ export default apiInitializer("1.14.0", (api) => {
   
   api.onPageChange((url, title) => {
     // Remove any existing confetti listener
-    if (this.confettiHandler) {
-      window.removeEventListener('click', this.confettiHandler);
-      this.confettiHandler = null;
+    if (confettiHandler) {
+      window.removeEventListener('click', confettiHandler);
+      confettiHandler = null;
     }
     
     if (allowedCategories || allowedURLs) {
@@ -31,7 +31,7 @@ export default apiInitializer("1.14.0", (api) => {
       
       if ((url.includes('/t/') && allowedCategories.includes(categorySlug.toString())) || (allowedURLs.includes(url)) {
         // Define the handler to use for confetti
-        this.confettiHandler = function (e) {
+        confettiHandler = function (e) {
           let xpos = e.clientX;
           let ypos = e.clientY;
           window.confetti({
@@ -44,7 +44,7 @@ export default apiInitializer("1.14.0", (api) => {
       }
     } else {
         // Confetti is used everywhere
-        this.confettiHandler = function (e) {
+        confettiHandler = function (e) {
           let xpos = e.clientX;
           let ypos = e.clientY;
           window.confetti({
@@ -54,6 +54,6 @@ export default apiInitializer("1.14.0", (api) => {
           });
         };
       }
-      window.addEventListener('click', this.confettiHandler);
+      window.addEventListener('click', confettiHandler);
   });
 });
