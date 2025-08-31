@@ -57,7 +57,7 @@ export default apiInitializer((api) => {
             origin: { y: ypos / window.innerHeight , x: xpos / window.innerWidth },
           });
         };
-        window.addEventListener('click', this.confettiHandler);
+        window.addEventListener('click', confettiHandler);
       }
     } else {
         console.log("!");
