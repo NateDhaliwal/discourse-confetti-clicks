@@ -9,7 +9,10 @@ export default apiInitializer((api) => {
   let confettiHandler; // To store the event listener function
   const allowedCategories = settings.allowed_in_categories.split('|');
   console.log(allowedCategories);
-  const allowedURLs = settings.allowed_in_urls.split('|');
+  const allowedURLs = settings.allowed_in_urls.split('|').forEach((u) => {
+    u = u.split('?')[0];
+  });
+  
   console.log(allowedURLs);
   const confettiAmount = settings.confetti_amount;
   const confettiSpread = settings.confetti_spread;
