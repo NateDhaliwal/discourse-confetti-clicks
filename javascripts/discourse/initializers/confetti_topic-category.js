@@ -29,7 +29,15 @@ export default apiInitializer((api) => {
         categorySlug = topicModel.category_id;
       }
       
-      if ((url.includes('/t/') && allowedCategories.includes(categorySlug.toString())) || (allowedURLs.includes(url)) {
+      if (
+        (url.includes('/t/')
+         &&
+         allowedCategories.includes(categorySlug.toString())
+        ) ||
+        (
+          allowedURLs.includes(url)
+        )
+      ) {
         // Define the handler to use for confetti
         confettiHandler = function (e) {
           let xpos = e.clientX;
