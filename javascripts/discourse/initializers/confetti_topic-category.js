@@ -7,6 +7,10 @@ import { tracked } from "@glimmer/tracking";
 
 export default apiInitializer("1.14.0", (api) => {
   @tracked confettiHandler; // To store the event listener function
+  const allowedCategories = settings.allowed_in_categories.split('|');
+  const allowedURLs = settings.allowed_in_urls.split('|');
+  const confettiAmount = settings.confetti_amount;
+  const confettiSpread = settings.confetti_spread;
   
   api.onPageChange((url, title) => {
     // Remove any existing confetti listener
@@ -14,23 +18,18 @@ export default apiInitializer("1.14.0", (api) => {
       window.removeEventListener('click', this.confettiHandler);
       this.confettiHandler = null;
     }
-  
-    allowedCategories = settings.allowed_in_categories.split('|');
-    allowedURLs = settings.allowed_in_urls.split('|');
-    confettiAmount = settings.confetti_amount;
-    confettiSpread = settings.confetti_spread;
     
     if (allowedCategories || allowedURLs) {
       topicController;
       topicModel
       categorySlug;
       if (url.includes('/t/')) {
-        this.topicController = Discourse.__container__.lookup('controller:topic');
-        this.topicModel; = this.topicController.get('model');
-        this.categorySlug; = this.topicModel.category_id;
+        topicController = Discourse.__container__.lookup('controller:topic');
+        topicModel; = topicController.get('model');
+        categorySlug; = topicModel.category_id;
       }
       
-      if ((url.includes('/t/') && this.allowedCategories.includes(this.categorySlug.toString())) || (this.allowedURLs.includes(url)) {
+      if ((url.includes('/t/') && allowedCategories.includes(categorySlug.toString())) || (allowedURLs.includes(url)) {
         // Define the handler to use for confetti
         this.confettiHandler = function (e) {
           let xpos = e.clientX;
