@@ -24,11 +24,13 @@ export default apiInitializer((api) => {
     }
     
     if (allowedCategories || allowedURLs) {
+      console.log("a b");
       let topicController;
       let topicModel;
       let categorySlug;
       
       if (url.includes('/t/')) {
+        console.log("topic");
         topicController = Discourse.__container__.lookup('controller:topic');
         topicModel = topicController.get('model');
         categorySlug = topicModel.category_id;
@@ -44,6 +46,7 @@ export default apiInitializer((api) => {
           allowedURLs.includes(url)
         )
       ) {
+        console.log("ab!");
         // Define the handler to use for confetti
         confettiHandler = function (e) {
           let xpos = e.clientX;
@@ -57,6 +60,7 @@ export default apiInitializer((api) => {
         window.addEventListener('click', this.confettiHandler);
       }
     } else {
+        console.log("!");
         // Confetti is used everywhere
         confettiHandler = function (e) {
           let xpos = e.clientX;
