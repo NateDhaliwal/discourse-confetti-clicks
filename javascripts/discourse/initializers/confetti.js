@@ -9,16 +9,13 @@ export default apiInitializer((api) => {
   let confettiHandler; // To store the event listener function
   const allowedCategories = settings.allowed_in_categories.split('|');
   console.log(allowedCategories);
-  const allowedURLs = settings.allowed_in_urls.split('|').forEach((u) => {
-    u = u.split('?')[0];
-  });
-  
+  const allowedURLs = settings.allowed_in_urls.split('|');
   console.log(allowedURLs);
   const confettiAmount = settings.confetti_amount;
   const confettiSpread = settings.confetti_spread;
   
   api.onPageChange((url, title) => {
-    console.log(url);
+    console.log(url.split('?')[0]);
     console.log(title);
     // Remove any existing confetti listener
     if (confettiHandler) {
@@ -46,7 +43,7 @@ export default apiInitializer((api) => {
           allowedCategories.includes(categorySlug.toString())
         ) ||
         (
-          allowedURLs.includes(url)
+          allowedURLs.includes(url.split('?')[0])
         )
       ) {
         console.log("ab!");
