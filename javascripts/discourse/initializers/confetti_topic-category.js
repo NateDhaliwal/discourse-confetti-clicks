@@ -30,9 +30,10 @@ export default apiInitializer((api) => {
       }
       
       if (
-        (url.includes('/t/')
-         &&
-         allowedCategories.includes(categorySlug.toString())
+        (
+          url.includes('/t/')
+          &&
+          allowedCategories.includes(categorySlug.toString())
         ) ||
         (
           allowedURLs.includes(url)
