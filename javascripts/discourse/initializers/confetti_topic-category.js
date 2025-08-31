@@ -8,7 +8,9 @@ import { tracked } from "@glimmer/tracking";
 export default apiInitializer((api) => {
   let confettiHandler; // To store the event listener function
   const allowedCategories = settings.allowed_in_categories.split('|');
+  console.log(allowedCategories);
   const allowedURLs = settings.allowed_in_urls.split('|');
+  console.log(allowedURLs);
   const confettiAmount = settings.confetti_amount;
   const confettiSpread = settings.confetti_spread;
   
@@ -23,6 +25,7 @@ export default apiInitializer((api) => {
       let topicController;
       let topicModel;
       let categorySlug;
+      
       if (url.includes('/t/')) {
         topicController = Discourse.__container__.lookup('controller:topic');
         topicModel = topicController.get('model');
