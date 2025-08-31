@@ -25,8 +25,8 @@ export default apiInitializer((api) => {
       let categorySlug;
       if (url.includes('/t/')) {
         topicController = Discourse.__container__.lookup('controller:topic');
-        topicModel; = topicController.get('model');
-        categorySlug; = topicModel.category_id;
+        topicModel = topicController.get('model');
+        categorySlug = topicModel.category_id;
       }
       
       if ((url.includes('/t/') && allowedCategories.includes(categorySlug.toString())) || (allowedURLs.includes(url)) {
