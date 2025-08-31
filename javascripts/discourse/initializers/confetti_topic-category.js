@@ -5,7 +5,7 @@ import { tracked } from "@glimmer/tracking";
 // script.src = "https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js";
 // document.head.appendChild(script);
 
-export default apiInitializer("1.14.0", (api) => {
+export default apiInitializer((api) => {
   const confettiHandler; // To store the event listener function
   const allowedCategories = settings.allowed_in_categories.split('|');
   const allowedURLs = settings.allowed_in_urls.split('|');
@@ -20,9 +20,9 @@ export default apiInitializer("1.14.0", (api) => {
     }
     
     if (allowedCategories || allowedURLs) {
-      topicController;
-      topicModel
-      categorySlug;
+      let topicController;
+      let topicModel;
+      let categorySlug;
       if (url.includes('/t/')) {
         topicController = Discourse.__container__.lookup('controller:topic');
         topicModel; = topicController.get('model');
