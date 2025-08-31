@@ -6,7 +6,7 @@ import { tracked } from "@glimmer/tracking";
 // document.head.appendChild(script);
 
 export default apiInitializer((api) => {
-  const confettiHandler; // To store the event listener function
+  let confettiHandler; // To store the event listener function
   const allowedCategories = settings.allowed_in_categories.split('|');
   const allowedURLs = settings.allowed_in_urls.split('|');
   const confettiAmount = settings.confetti_amount;
