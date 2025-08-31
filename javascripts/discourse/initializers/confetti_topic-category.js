@@ -15,6 +15,8 @@ export default apiInitializer((api) => {
   const confettiSpread = settings.confetti_spread;
   
   api.onPageChange((url, title) => {
+    console.log(url);
+    console.log(title);
     // Remove any existing confetti listener
     if (confettiHandler) {
       window.removeEventListener('click', confettiHandler);
