@@ -1,20 +1,16 @@
 confetti_amount:
   default: 100
   type: integer
-  description: "The amount of confetti used on each click."
 
 confetti_spread:
   default: 360
   type: integer
-  description: "The spread of confetti around on each click. All values are in degrees."
 
 allowed_in_categories:
   default: general
   type: list
   list_type: category
-  description: "Enter the category(s) for confetti to be enabled in. To enable confetti in all categories, leave this blank."
 
 allowed_in_urls:
   default: ""
   type: list
-  description: "Specific URLs to enable confetti."
