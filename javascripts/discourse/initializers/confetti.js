@@ -21,7 +21,7 @@ export default apiInitializer((api) => {
             let categorySlug;
 
             if (url.includes('/t/')) {
-                topicController = Discourse.__container__.lookup('controller:topic');
+                topicController = Discourse.__container__.lookup('controller:topic'); // eslint-disable-no-undef
                 topicModel = topicController.get('model');
                 categorySlug = topicModel.category_id;
             }
