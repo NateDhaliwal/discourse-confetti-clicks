@@ -1,5 +1,5 @@
 en:
   theme_metadata:
-    description: "TODO"
+    description: "A Theme Component to show confetti at the mouse when clicked."
     settings:
       example_setting: "A description of a setting."
