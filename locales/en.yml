@@ -2,4 +2,7 @@ en:
   theme_metadata:
     description: "A Theme Component to show confetti at the mouse when clicked."
     settings:
-      example_setting: "A description of a setting."
+      confetti_amount: "The amount of confetti used on each click."
+      confetti_spread: "The spread of confetti around on each click. All values are in degrees."
+      allowed_in_categories: "Enter the category(s) for confetti to be enabled in. To enable confetti in all categories, leave this blank."
+      allowed_in_urls: "Specific URLs to enable confetti."
